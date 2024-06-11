@@ -11,12 +11,13 @@ import org.springframework.web.cors.reactive.UrlBasedCorsConfigurationSource;
 import java.util.List;
 
 @Configuration
-@Profile("cors")
+//@Profile("cors")
 public class CorsConfig {
 
     @Bean
     CorsWebFilter corsWebFilter() {
         var corsConfiguration = new CorsConfiguration();
+        corsConfiguration.setAllowCredentials(true);
         corsConfiguration.setAllowedOrigins(List.of("*")); // Acepta todos los origines
         corsConfiguration.setAllowedMethods(List.of("*")); // Acepta todos los métodos
         corsConfiguration.setAllowedHeaders(List.of("*")); // Acepta todos los headers
