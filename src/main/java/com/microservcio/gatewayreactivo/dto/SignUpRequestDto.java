@@ -14,7 +14,8 @@ import java.util.List;
 @Builder
 public class SignUpRequestDto {
     private String username;
-    private String email;
     private String password;
+    private String email;
+    private String bomba = null;
     private List<String> roles;
 }

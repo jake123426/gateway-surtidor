@@ -16,6 +16,7 @@ public class LoginResponseDto {
     private String name;
     private String password;
     private String email;
+    private String bomba;
     private List<String> roles;
     private List<String> permisos;
 }
