@@ -10,21 +10,21 @@ import org.springframework.web.cors.reactive.UrlBasedCorsConfigurationSource;
 
 import java.util.List;
 
-@Configuration
+//@Configuration
 //@Profile("cors")
 public class CorsConfig {
 
-    @Bean
-    CorsWebFilter corsWebFilter() {
-        var corsConfiguration = new CorsConfiguration();
-        corsConfiguration.setAllowCredentials(true);
-        corsConfiguration.setAllowedOrigins(List.of("*")); // Acepta todos los origines
-        corsConfiguration.setAllowedMethods(List.of("*")); // Acepta todos los métodos
-        corsConfiguration.setAllowedHeaders(List.of("*")); // Acepta todos los headers
-        corsConfiguration.setExposedHeaders(List.of("*")); // Acepta todos los headers expuestos
-        var source = new UrlBasedCorsConfigurationSource();
-        source.registerCorsConfiguration("/**", corsConfiguration);
-        return new CorsWebFilter(source);
-    }
+//    @Bean
+//    public CorsWebFilter corsWebFilter() {
+//        var corsConfiguration = new CorsConfiguration();
+//        corsConfiguration.setAllowCredentials(true);
+//        corsConfiguration.setAllowedOrigins(List.of("*")); // Acepta todos los origines
+//        corsConfiguration.setAllowedMethods(List.of("*")); // Acepta todos los métodos
+//        corsConfiguration.setAllowedHeaders(List.of("*")); // Acepta todos los headers
+//        corsConfiguration.setExposedHeaders(List.of("*")); // Acepta todos los headers expuestos
+//        var source = new UrlBasedCorsConfigurationSource();
+//        source.registerCorsConfiguration("/**", corsConfiguration);
+//        return new CorsWebFilter(source);
+//    }
 
 }

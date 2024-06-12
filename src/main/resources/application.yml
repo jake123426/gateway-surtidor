@@ -32,6 +32,7 @@ spring:
               - DELETE
             allowedHeaders: "*"
             allowCredentials: true
+        add-to-simple-url-handler-mapping: true
 
 # jwt configurtion
 security:
