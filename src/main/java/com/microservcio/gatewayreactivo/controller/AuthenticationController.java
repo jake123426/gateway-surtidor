@@ -23,7 +23,6 @@ public class AuthenticationController {
 
     @PostMapping("/login")
     public Mono<ResponseEntity<ResponseDto>> login(@RequestBody @Valid LoginRequestDto userRequest){
-        System.out.println("Entre al login");
         return userDetailServiceImpl.loginUser(userRequest)
                 .flatMap( responseDto -> Mono.just(new ResponseEntity<>(responseDto, HttpStatus.OK)))
                 .onErrorResume( error -> {
