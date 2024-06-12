@@ -1,6 +1,6 @@
 
 server:
-  port: 8080
+  port: 8082
 
 internal:
   lb:
@@ -21,18 +21,20 @@ spring:
           uri: ${internal.lb.uri}:8090
           predicates:
             - Path=/graphql
-      globalcors:
-        cors-configurations:
-          '[/**]':
-            allowedOrigins: "*"
-            allowedMethods:
-              - GET
-              - POST
-              - PUT
-              - DELETE
-            allowedHeaders: "*"
-            allowCredentials: true
-        add-to-simple-url-handler-mapping: true
+#      globalcors:
+#        cors-configurations:
+#          '[/**]':
+#            allowedOrigins: '*'
+#            allowedMethods:
+#              - GET
+#              - POST
+#              - OPTIONS
+#            allowedHeaders: '*'
+#            allowCredentials: true
+#        add-to-simple-url-handler-mapping: true
+#      default-filters:
+#        -  DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
+
 
 # jwt configurtion
 security:
