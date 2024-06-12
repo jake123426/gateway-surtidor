@@ -3,9 +3,12 @@ package com.microservcio.gatewayreactivo.config.filters;
 
 import com.auth0.jwt.exceptions.JWTVerificationException;
 import com.auth0.jwt.interfaces.DecodedJWT;
+import com.microservcio.gatewayreactivo.dto.ResponseDto;
 import com.microservcio.gatewayreactivo.util.JwtUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
@@ -38,7 +41,7 @@ public class JwtAuthenticationFilter implements WebFilter {
             DecodedJWT decodedJWT = jwtUtils.validateToken(token);
 
             if (decodedJWT == null) {
-                return Mono.error(new JWTVerificationException("Token invalid, not Authorized"));
+                return  chain.filter(exchange).onErrorResume( error -> Mono.error( new JWTVerificationException("Token invalid, not Authorized") ));
             }
             if (SecurityContextHolder.getContext().getAuthentication() == null) {
 
