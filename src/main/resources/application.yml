@@ -1,10 +1,10 @@
 
 server:
-  port: 8082
+  port: 8080
 
 internal:
   lb:
-    uri: http://localhost
+    uri: http://localhost:8090
 
 # gateway routes
 spring:
@@ -14,11 +14,11 @@ spring:
     gateway:
       routes:
         - id: backendspring
-          uri: ${internal.lb.uri}:8090
+          uri: ${internal.lb.uri}
           predicates:
             - Path=/api/**
         - id: backendspring
-          uri: ${internal.lb.uri}:8090
+          uri: ${internal.lb.uri}
           predicates:
             - Path=/graphql
 #      globalcors:
@@ -44,3 +44,7 @@ security:
     user:
       generator: Gateway
 
+
+# Backend domain
+backend:
+  url: http://localhost:8090

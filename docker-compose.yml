@@ -1,0 +1,27 @@
+version: '3'
+
+services:
+  backend_spring:
+    container_name: backend-spring
+    image: backend/spring:latest
+#    ports:
+#      - "8086:8090"
+#    volumes:
+#      - ./postgres:/var/lib/postgresql/data
+#    environment:
+#      - POSTGRES_PASSWORD=123456
+  gateway_spring:
+    container_name: gateway-spring
+    depends_on:
+      - backend_spring
+    image: gateway/spring:latest
+    ports:
+      - "8080:8080"
+    environment:
+      BACKEND_URL: backend-spring
+      INTERNAL_LB_URI: backend-spring
+#    volumes:
+#      - ./pgadmin:/var/lib/pgadmin
+#    environment:
+#      - PGADMIN_DEFAULT_PASSWORD=123456
+#      - PGADMIN_DEFAULT_EMAIL=superman@google.com

@@ -3,6 +3,7 @@ package com.microservcio.gatewayreactivo.client;
 import com.microservcio.gatewayreactivo.dto.LoginResponseDto;
 import com.microservcio.gatewayreactivo.dto.SignUpRequestDto;
 import com.microservcio.gatewayreactivo.dto.SignUpResponseDto;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.MediaType;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -15,9 +16,12 @@ public class HttpClient {
 
     private final WebClient webClient;
 
+    @Value("${backend.url}")
+    private String backendURL;
+
     public HttpClient() {
         this.webClient = WebClient.builder()
-                .baseUrl("http://localhost:8090/")
+                .baseUrl( "http://localhost:8090" )
                 .build();
     }
 

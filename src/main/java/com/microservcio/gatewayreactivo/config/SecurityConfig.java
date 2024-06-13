@@ -58,7 +58,7 @@ public class SecurityConfig {
 //                .exceptionHandling(e -> e.authenticationEntryPoint(jwtAuthenticationEntryPoint)) //* Handle Exceptions
                 .authorizeExchange(exchanges  -> exchanges
                         .pathMatchers(HttpMethod.POST, "/auth/**").permitAll()
-//                        .pathMatchers(HttpMethod.GET, GET_ROLE_NAME).hasRole("Role_Name")
+                        .pathMatchers(HttpMethod.GET, "/api/user/all").hasRole("ADMIN")
                         .anyExchange().authenticated())
                 .addFilterBefore( jwtAuthenticationFilter, SecurityWebFiltersOrder.HTTP_BASIC)
                 .build();

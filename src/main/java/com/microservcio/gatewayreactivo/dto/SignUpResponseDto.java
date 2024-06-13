@@ -8,6 +8,7 @@ public record SignUpResponseDto(
         String password,
         String email,
         String bomba,
+        String createAt,
         List<String> roles,
         List<String> permisos
 
