@@ -16,11 +16,12 @@ public class HttpClient {
 
     private final WebClient webClient;
 
-    @Value("${backend.url}")
-    private String backendURL;
+//    @Value("${backend.url}")
+//    private String backendURL;
 
     public HttpClient() {
         this.webClient = WebClient.builder()
+//                .baseUrl( "http://34.176.175.157:80" )
                 .baseUrl( "http://localhost:8090" )
                 .build();
     }

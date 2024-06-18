@@ -4,6 +4,7 @@ server:
 
 internal:
   lb:
+#    uri: http://34.176.175.157:80
     uri: http://localhost:8090
 
 # gateway routes
@@ -21,6 +22,12 @@ spring:
           uri: ${internal.lb.uri}
           predicates:
             - Path=/graphql
+        - id: backendspring
+          uri: ${internal.lb.uri}
+          predicates:
+            - Path=/graphiql
+
+
 #      globalcors:
 #        cors-configurations:
 #          '[/**]':
@@ -46,5 +53,5 @@ security:
 
 
 # Backend domain
-backend:
-  url: http://localhost:8090
+#backend:
+#  url: http://localhost:8090

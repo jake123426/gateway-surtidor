@@ -58,7 +58,19 @@ public class SecurityConfig {
 //                .exceptionHandling(e -> e.authenticationEntryPoint(jwtAuthenticationEntryPoint)) //* Handle Exceptions
                 .authorizeExchange(exchanges  -> exchanges
                         .pathMatchers(HttpMethod.POST, "/auth/**").permitAll()
-                        .pathMatchers(HttpMethod.GET, "/api/user/all").hasRole("ADMIN")
+                        .pathMatchers(HttpMethod.GET, "/graphiql").permitAll()
+                        .pathMatchers(HttpMethod.GET, "/api/user/all").hasAnyRole("ADMIN", "SELLER")
+                        .pathMatchers(HttpMethod.POST, "/api/vehiculo").hasRole("ADMIN")
+                        .pathMatchers(HttpMethod.GET, "/api/vehiculo/all").hasAnyRole("ADMIN", "SELLER")
+                        .pathMatchers(HttpMethod.POST, "/api/combustible").hasRole("ADMIN")
+                        .pathMatchers(HttpMethod.GET, "/api/combustible/all").hasAnyRole("ADMIN", "SELLER")
+                        .pathMatchers(HttpMethod.POST, "/api/tanque").hasRole("ADMIN")
+                        .pathMatchers(HttpMethod.GET, "/api/tanque/all").hasAnyRole("ADMIN", "SELLER")
+                        .pathMatchers(HttpMethod.POST, "/api/bomba").hasRole("ADMIN")
+                        .pathMatchers(HttpMethod.GET, "/api/bomba/all").hasAnyRole("ADMIN", "SELLER")
+//                        .pathMatchers(HttpMethod.GET, "/api/user/all").hasAnyRole("ADMIN", "SUPERADMIN")
+//                        .pathMatchers(HttpMethod.GET, "/api/user/all").hasAuthority("CREATE")
+//                        .pathMatchers(HttpMethod.GET, "/api/user/all").hasAnyAuthority("CREATE", "DELETE")
                         .anyExchange().authenticated())
                 .addFilterBefore( jwtAuthenticationFilter, SecurityWebFiltersOrder.HTTP_BASIC)
                 .build();
