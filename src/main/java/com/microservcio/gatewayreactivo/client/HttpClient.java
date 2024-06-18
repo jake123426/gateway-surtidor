@@ -21,8 +21,8 @@ public class HttpClient {
 
     public HttpClient() {
         this.webClient = WebClient.builder()
-//                .baseUrl( "http://34.176.175.157:80" )
-                .baseUrl( "http://localhost:8090" )
+                .baseUrl( "http://34.176.196.5:80" )
+//                .baseUrl( "http://localhost:8090" )
                 .build();
     }
 

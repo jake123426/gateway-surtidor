@@ -4,8 +4,8 @@ server:
 
 internal:
   lb:
-#    uri: http://34.176.175.157:80
-    uri: http://localhost:8090
+    uri: http://34.176.196.5:80
+#    uri: http://localhost:8090
 
 # gateway routes
 spring:
